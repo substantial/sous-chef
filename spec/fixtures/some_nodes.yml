@@ -1,0 +1,11 @@
+SuperAwesomeNode:
+  nodeconfig: some/path/to/node/config
+  sshconfig:
+    HostName: 12.34.56.789
+    Port: 1234
+    IdentityFile: ~/.ssh/other_id_rsa
+
+OtherAwesome:
+  sshconfig:
+    HostName: localhost
+
