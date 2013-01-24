@@ -1,0 +1,4 @@
+class SousChef::Nodes
+
+end
+
