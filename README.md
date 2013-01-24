@@ -14,11 +14,8 @@ Add the following to your `Rakefile`:
 
 ## Configure
 
-nodes.yml
-
-Create `nodes.yml` in your root. Example `nodes.yml`:
-
-Key is node name and everything underneath is used for the sshconfig
+Create configuration in knife-solo nodes dir e.g. `nodes/nodes.yml`. Node
+configuration is used for sshconfig as well as nodename. Example `nodes.yml`:
 
 ```yaml
 SuperAwesomeNode:
