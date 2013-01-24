@@ -12,7 +12,7 @@ def run_knife(command, node)
 end
 
 def agents
-  agents_path = File.join(Dir.pwd, "agents.yml")
+  agents_path = File.join(Dir.pwd, "nodes.yml")
   unless File.exists? agents_path
     puts "Can't find #{agents_path}"
     exit 1
