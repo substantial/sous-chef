@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.email       = "shaun@substantail.com"
 
   s.name        = 'sous-chef'
-  s.version     = "0.0.0"
-  s.description = %q{Manage chef nodes with knife-solo}
+  s.version     = "0.0.1"
+  s.description = %q{Manage knife-solo nodes}
   # s.summary     = %q{Manage nodes}
   s.homepage = %q{http://github.com/substantial/sous-chef}
   s.rubyforge_project = "sous-chef"
