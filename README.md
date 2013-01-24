@@ -1,4 +1,4 @@
-# SousChef
+# Sous Chef
 
 Note: This gem is a work in progress.
 
