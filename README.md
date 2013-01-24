@@ -2,7 +2,7 @@
 
 Note: This gem is a work in progress.
 
-Manage knife-solo nodes.
+Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
 
 ## Install
 

@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
   s.version     = "0.0.3"
   s.description = %q{Manage knife-solo nodes}
   s.summary     = %q{Manage knife-solo nodes}
-  s.homepage = %q{http://github.com/substantial/sous-chef}
-  s.rubyforge_project = "sous-chef"
+  s.homepage    = %q{http://github.com/substantial/sous-chef}
+  s.license     = "MIT"
 
-  s.license = "MIT"
+  s.rubyforge_project = "sous-chef"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
