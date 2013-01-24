@@ -1,11 +1,15 @@
 require 'spec_helper'
 
 describe SousChef::Manager do
-  describe "#initialize" do
-    subject { SousChef::Manager.new('some config file') }
+  let(:manager) { SousChef::Manager.new('some config file') }
 
+  describe "#initialize" do
     it "instantiates a parser with the config file" do
-      subject.parser.should be_a SousChef::Parser
+      manager.parser.should be_a SousChef::Parser
+    end
+
+    it "instantiates nodes" do
+      manager.nodes.should be_a Array
     end
   end
 end
