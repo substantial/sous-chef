@@ -1,20 +1,19 @@
 class SousChef::Node
+  attr_reader :name
+
   require 'tempfile'
 
-  def initialize(node_hash)
-    @node_hash = node_hash
-  end
-
-  def name
-    @name ||= @node_hash.keys.first
+  def initialize(node, settings)
+    @settings = settings
+    @name = node
   end
 
   def config
-    @config ||= @node_hash[name]['node_config']
+    @config ||= @settings['node_config'] || {}
   end
 
   def hostname
-    @hostname = ssh_hash['Host'] || name
+    @hostname = ssh_hash['Host'] || @name
   end
 
   def ssh_config
@@ -36,7 +35,7 @@ class SousChef::Node
   private
 
   def ssh_hash
-    @node_hash[name]['ssh_config'] || {}
+    @ssh_hash = @settings['ssh_config'] || {}
   end
 
   def ssh_attrs

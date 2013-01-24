@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 describe SousChef::Node do
-  let(:node_hash) { YAML.load_file(File.join(SPEC_ROOT, "fixtures", "single_node.yml")) }
+  let(:node_hash) { {
+    "node_config" => "some/path/to/node/config",
+    "ssh_config" => { "HostName" => "Some IP" }
+  }}
 
-  subject { SousChef::Node.new(node_hash) }
+  subject { SousChef::Node.new('SuperAwesomeNode', node_hash) }
 
   describe "#name" do
     its(:name) { should == "SuperAwesomeNode" }
@@ -17,7 +20,7 @@ describe SousChef::Node do
     its(:hostname) { should == 'SuperAwesomeNode' }
 
     context "with host in ssh_config" do
-      before { node_hash["SuperAwesomeNode"]["ssh_config"]["Host"] = 'Some other name'}
+      before { node_hash["ssh_config"]["Host"] = 'Some other name'}
       its(:hostname) { should == 'Some other name'}
     end
   end
@@ -26,7 +29,6 @@ describe SousChef::Node do
     it "returns ssh_config" do
       subject.ssh_config.should include "Host SuperAwesomeNode\n"
       subject.ssh_config.should include "HostName Some IP\n"
-      subject.ssh_config.should include "Port 1234\n"
     end
   end
 end
