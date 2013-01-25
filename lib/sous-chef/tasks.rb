@@ -9,7 +9,7 @@ def run_knife(command, node)
   run "knife solo #{command} -F #{node.ssh_config_path} #{node.hostname} -N #{node.name} #{node.config}"
 end
 
-SousChef::Manager.new(File.join(Dir.pwd, "nodes", "nodes.yml")).nodes.each do |name, node|
+SousChef::Manager.new(SousChef::CONFIG_FILE).nodes.each do |name, node|
   namespace name do
     desc "Run knife solo prepare for #{name}"
     task :prepare do
@@ -26,5 +26,10 @@ SousChef::Manager.new(File.join(Dir.pwd, "nodes", "nodes.yml")).nodes.each do |n
       run_knife 'bootstrap', node
     end
   end
+end
+
+desc "Generate nodes.yml example config"
+task :sous_chef do
+  SousChef.create_config
 end
 

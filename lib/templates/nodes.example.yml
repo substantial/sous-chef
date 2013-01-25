@@ -1,0 +1,13 @@
+# Format:
+#
+# <node name>:
+#   node_config: <knife-solo node config e.g. nodes/someNode.json>
+#   ssh_config:
+#     <ssh config options>
+#     e.g.
+#     Host: <host alias. defaults to node name>
+#     HostName: 12.34.56.789
+#     Port: 1234
+#     IdentityFile: ~/.ssh/other_id_rsa
+#
+
