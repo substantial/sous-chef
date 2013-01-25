@@ -1,5 +1,3 @@
-require 'rake'
-
 
 module SousChef
   CONFIG_FILE = File.join(Dir.pwd, "nodes", "nodes.yml")
@@ -17,8 +15,8 @@ module SousChef
   end
 end
 
-load 'sous-chef/parser.rb'
-load 'sous-chef/node.rb'
-load 'sous-chef/manager.rb'
-load 'sous-chef/tasks.rb'
+require 'sous-chef/parser.rb'
+require 'sous-chef/node.rb'
+require 'sous-chef/manager.rb'
+require 'sous-chef/tasks.rb'
 
