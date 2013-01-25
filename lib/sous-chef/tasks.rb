@@ -1,3 +1,4 @@
+require 'rake'
 
 def run(command)
   puts "Running: #{command}"

@@ -13,7 +13,7 @@ class SousChef::Node
   end
 
   def hostname
-    @hostname = ssh_hash['Host'] || @name
+    @hostname ||= ssh_hash['Host'] || @name
   end
 
   def ssh_config
@@ -35,7 +35,7 @@ class SousChef::Node
   private
 
   def ssh_hash
-    @ssh_hash = @settings['ssh_config'] || {}
+    @ssh_hash ||= @settings['ssh_config'] || {}
   end
 
   def ssh_attrs
