@@ -1,12 +1,19 @@
-SuperAwesomeNode:
-  node_config: some/path/to/node/config
-  ssh_config:
-    HostName: 12.34.56.789
-    Port: 1234
-    IdentityFile: ~/.ssh/other_id_rsa
+production:
+  OtherAwesome:
+    node_config: some/path/to/node/config
+    ssh_config:
+      HostName: localhost
 
-OtherAwesome:
-  node_config: some/path/to/node/config
-  ssh_config:
-    HostName: localhost
+  CoolWorld:
+    node_config: some/path/to/node/config
+    ssh_config:
+      HostName: Some Ip
+
+staging:
+  AwesomeDBServer:
+    node_config: some/path/to/node/config
+    ssh_config:
+      HostName: 12.34.56.789
+      Port: 1234
+      IdentityFile: ~/.ssh/other_id_rsa
 
