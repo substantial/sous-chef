@@ -1,7 +1,5 @@
 # Sous Chef
 
-Note: This gem is a work in progress.
-
 Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
 
 ## Install
@@ -57,4 +55,7 @@ staging:
 ## Usage
 
 `rake -T` for a full list of tasks provided:
+
+`rake <environment>:all:<knife solo task>` will run on all nodes for a given
+environment.
 
