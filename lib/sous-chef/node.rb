@@ -17,19 +17,24 @@ class SousChef::Node
   end
 
   def ssh_config
-    config = "Host #{hostname}\n"
-    ssh_attrs.each do |key, value|
-      config << "  #{key} #{value}\n"
-    end
-    config
+    @config ||= begin
+      config = "Host #{hostname}\n"
+       ssh_attrs.each do |key, value|
+         config << "  #{key} #{value}\n"
+       end
+       config
+     end
   end
 
   def ssh_config_path
-    config_file = Tempfile.new('agent_ssh_config')
-    config_file.write(ssh_config)
-    config_file.close
-    at_exit { config_file.delete }
-    config_file.path
+    @config_file ||= begin
+      config_file = Tempfile.new('agent_ssh_config')
+      config_file.write(ssh_config)
+      config_file.close
+      at_exit { config_file.delete }
+      config_file
+    end
+    @config_file.path
   end
 
   private
@@ -39,9 +44,11 @@ class SousChef::Node
   end
 
   def ssh_attrs
-    attrs = ssh_hash.clone
-    attrs.delete('Host')
-    attrs
+    @ssh_attrs ||= begin
+      ssh_attrs = ssh_hash.clone
+      ssh_attrs.delete('Host')
+      ssh_attrs
+    end
   end
 end
 
