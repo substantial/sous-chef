@@ -8,14 +8,8 @@ describe SousChef::Manager do
       manager.parser.should be_a SousChef::Parser
     end
 
-    it "instantiates nodes" do
-      manager.nodes.should be_a Hash
-    end
-  end
-
-  describe "#all" do
-    it "returns node names" do
-      manager.all.should =~ %w[SuperAwesomeNode OtherAwesome]
+    it "has environments" do
+      manager.envs.should be_a Hash
     end
   end
 end

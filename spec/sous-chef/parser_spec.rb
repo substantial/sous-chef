@@ -13,7 +13,7 @@ describe SousChef::Parser do
     subject { SousChef::Parser.new(File.join(SPEC_ROOT, "fixtures", "some_nodes.yml")).parse }
 
     it "parses yaml" do
-      subject.keys.should =~ %w[SuperAwesomeNode OtherAwesome]
+      subject.keys.should =~ %w[production staging]
     end
   end
 end

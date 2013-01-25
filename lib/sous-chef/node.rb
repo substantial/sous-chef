@@ -3,9 +3,9 @@ class SousChef::Node
 
   require 'tempfile'
 
-  def initialize(node, settings)
+  def initialize(name, settings)
     @settings = settings
-    @name = node
+    @name = name
   end
 
   def config
