@@ -40,16 +40,24 @@ production:
       Port 1234
       IdentityFile: ~/.ssh/other_id_rsa
 
-  OtherAwesome:
-    node_config: nodes/some_node.json
-    ssh_config:
-      HostName: 12.34.56.789
-
-staging:
-  CoolWorld
+  CoolWorld:
     node_config: nodes/some_node.json
     ssh_config:
       HostName: localhost
+
+vagrant:
+  default:
+    node_config: nodes/buildAgent.json
+    ssh_config:
+      HostName: 127.0.0.1
+      User: vagrant
+      Port: 2222
+      UserKnownHostsFile: /dev/null
+      StrictHostKeyChecking: "no"
+      PasswordAuthentication: "no"
+      IdentityFile: "~/.vagrant.d/insecure_private_key"
+      IdentitiesOnly: "yes"
+      ForwardAgent: "yes"
 ```
 
 ## Usage

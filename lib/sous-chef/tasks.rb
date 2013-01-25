@@ -10,14 +10,28 @@ def run_knife(command, node)
   run "knife solo #{command} -F #{node.ssh_config_path} #{node.hostname} -N #{node.name} #{node.config}"
 end
 
+def build_task_list(environment_name, names, task)
+  names.map { |name| "#{environment_name}:#{name}:#{task}" }
+end
+
 SousChef::Manager.new(SousChef::CONFIG_FILE).envs.each do |environment_name, env|
   namespace environment_name do
-    env.nodes.each do |node_name, node|
+    namespace :all do
+      desc "Run knife solo prepare for all #{environment_name} nodes"
+      multitask :prepare => build_task_list(environment_name, env.nodes.keys, "prepare")
 
+      desc "Run knife solo cook for all #{environment_name} nodes"
+      multitask :cook => build_task_list(environment_name, env.nodes.keys, "cook")
+
+      desc "Run knife solo bootstrap for all #{environment_name} nodes"
+      multitask :bootstrap => build_task_list(environment_name, env.nodes.keys, "bootstrap")
+    end
+
+    env.nodes.each do |node_name, node|
       namespace node_name do
         desc "Run knife solo prepare for #{node_name}"
         task :prepare do
-          run_knife 'prepare', node
+          run_knife 'prepare', node 
         end
 
         desc "Run knife solo cook for #{node_name}"
