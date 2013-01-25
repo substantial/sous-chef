@@ -8,7 +8,8 @@ Gem::Specification.new do |s|
   s.name        = 'sous-chef'
   s.version     = "0.0.4"
   s.description = %q{Manage knife-solo nodes}
-  s.summary     = %q{Manage knife-solo nodes}
+  s.summary     = %q{Manage knife-solo nodes by environment. Run knife solo
+commands on one or multiple nodes.}
   s.homepage    = %q{http://github.com/substantial/sous-chef}
   s.license     = "MIT"
 
