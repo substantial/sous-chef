@@ -17,7 +17,9 @@ end
 
 require 'sous-chef/parser.rb'
 require 'sous-chef/node.rb'
-require 'sous-chef/environment.rb'
+require 'sous-chef/collection.rb'
+require 'sous-chef/task_builder.rb'
+require 'sous-chef/node_builder.rb'
 require 'sous-chef/manager.rb'
 require 'sous-chef/tasks.rb'
 

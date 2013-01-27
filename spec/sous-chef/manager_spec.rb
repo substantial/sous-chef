@@ -7,9 +7,12 @@ describe SousChef::Manager do
     it "instantiates a parser with the config file" do
       manager.parser.should be_a SousChef::Parser
     end
+  end
 
-    it "has environments" do
-      manager.envs.should be_a Hash
+  describe "#nodes" do
+    subject { manager.nodes }
+    it "returns a hash" do
+      subject.should be_a Hash
     end
   end
 end
