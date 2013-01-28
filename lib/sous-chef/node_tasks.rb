@@ -32,6 +32,7 @@ module SousChef::NodeTasks
     end
   end
 
+
   def run(command)
     puts "Running: #{command}"
     system command
@@ -41,5 +42,7 @@ module SousChef::NodeTasks
   def run_knife(command, node)
     run "knife solo #{command} -F #{node.ssh_config_path} #{node.hostname} -N #{node.name} #{node.config}"
   end
+
+  module_function :build_node_task, :cook_task, :bootstrap_task, :prepare_task, :run, :run_knife
 end
 

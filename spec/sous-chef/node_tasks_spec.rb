@@ -1,24 +1,36 @@
 require 'spec_helper'
 
 describe SousChef::NodeTasks do
-  include SousChef::NodeTasks
+
   let(:node) { double('node') }
+
   before do
-    stub(:run)
+    SousChef::NodeTasks.stub(:run)
+    node.stub(name: 'foo')
   end
 
   describe "#run_knife" do
     before do
-      node.stub(:name).and_return('foo')
-      node.stub(:hostname).and_return('node_hostname')
-      node.stub(:ssh_config_path).and_return('ssh_config_path')
-      node.stub(:config).and_return('knife_solo_node_config')
+      node.stub(hostname: 'node_hostname')
+      node.stub(ssh_config_path: 'ssh_config_path')
+      node.stub(config: 'knife_solo_node_config')
     end
 
-    its "runs knife solo command for given node" do
-      should_receive(:run).with("knife solo some_command -F ssh_config_path node_hostname -N foo knife_solo_node_config")
-      run_knife('some_command', node)
+    it "runs knife solo command for given node" do
+      SousChef::NodeTasks.should_receive(:run).with("knife solo some_command -F ssh_config_path node_hostname -N foo knife_solo_node_config")
+      SousChef::NodeTasks.run_knife('some_command', node)
     end
   end
+
+  # describe "#cook_task" do
+  #   before do
+  #     stub(:run_knife)
+  #     should_receive(:run_knife).with("cook", node)
+  #   end
+
+  #   it "" do
+  #     cook_task(node)
+  #   end
+  # end
 end
 
