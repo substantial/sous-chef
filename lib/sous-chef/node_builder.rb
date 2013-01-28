@@ -1,10 +1,9 @@
 class SousChef::NodeBuilder
-  attr_reader :nodes
+  include SousChef::NodeHelpers
 
   def initialize(name, config_hash)
     @name = name
     @config_hash = config_hash
-    @nodes = SousChef::Collection.new(@node)
   end
 
   def build
@@ -15,17 +14,14 @@ class SousChef::NodeBuilder
     end
   end
 
-  def node?(settings_hash)
-    settings_hash.has_key?('node_config') || settings_hash.has_key?('ssh_config')
-  end
-
   private
 
   def build_nodes
+    nodes = SousChef::Collection.new(@name)
     @config_hash.each do |name, collection_hash|
-      @nodes[name] = SousChef::NodeBuilder.new(name, collection_hash).build
+      nodes[name] = SousChef::NodeBuilder.new(name, collection_hash).build
     end
-    @nodes
+    nodes
   end
 end
 
