@@ -1,25 +1,12 @@
 class SousChef::Collection
-  attr_reader :children, :name
+  extend Forwardable
+
+  attr_reader :name
+  def_delegators :@children, :[], :[]=, :has_key?, :each
 
   def initialize(name)
-    @children = {}
     @name = name
-  end
-
-  def []=(name, item)
-    @children[name] = item
-  end
-
-  def [](name)
-    @children[name]
-  end
-
-  def each(&block)
-    @children.each(&block)
-  end
-
-  def has_key?(key)
-    @children.has_key?(key)
+    @children = {}
   end
 end
 

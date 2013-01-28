@@ -4,44 +4,28 @@ describe SousChef::Collection do
   let(:nodes) { {} }
   let(:collection) { SousChef::Collection.new('some collection') }
 
+  subject { collection }
+
   describe "#initialize" do
     it "sets the name" do
-      collection.name.should == 'some collection'
+      subject.name.should == 'some collection'
     end
   end
 
-  describe "#[]=" do
+  describe "#[]= & #[]" do
     subject { collection }
 
-    it "it assigns to children" do
+    it "should behave like a hash" do
       subject['foo'] = {bar: 'baz'}
-      subject.children.should == { 'foo' => { bar: 'baz' } }
-    end
-  end
-
-  describe "#[]" do
-    subject { collection }
-
-    it "it access children" do
-      hash = { bar: 'baz' }
-      subject['foo'] = hash
-      subject.children['foo'].should == hash
+      subject['foo'].should == {bar: 'baz'}
     end
   end
 
   describe "#has_key?" do
-    it "delegates to children" do
-      collection.children.should_receive(:has_key?).with('some key')
-      collection.has_key?('some key')
+    it "should behave like a hash" do
+      subject['some_key'] = true
+      subject.has_key?('some_key')
     end
   end
-
-  # describe "#each" do
-  #   let(:block) { lambda {} }
-  #   it "delegates to children" do
-  #     collection.children.should_receive(:each).with(block)
-  #     collection.each block
-  #   end
-  # end
 end
 
