@@ -1,4 +1,7 @@
+require 'rake'
+
 module SousChef::NodeTasks
+  include Rake::DSL
 
   def build_node_task(node)
     namespace node.name do
