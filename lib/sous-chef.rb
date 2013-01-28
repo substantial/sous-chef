@@ -15,6 +15,7 @@ module SousChef
   end
 end
 
+require 'helpers/node_helpers.rb'
 require 'sous-chef/parser.rb'
 require 'sous-chef/node.rb'
 require 'sous-chef/collection.rb'
