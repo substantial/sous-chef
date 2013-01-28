@@ -26,6 +26,11 @@ describe SousChef::NodeHelpers do
     context "with empty hash" do
       it { should be_false }
     end
+
+    context "with collection" do
+      subject { node?(SousChef::Collection.new('some collection')) }
+      it { should be_false }
+    end
   end
 end
 

@@ -29,6 +29,13 @@ describe SousChef::Collection do
     end
   end
 
+  describe "#has_key?" do
+    it "delegates to children" do
+      collection.children.should_receive(:has_key?).with('some key')
+      collection.has_key?('some key')
+    end
+  end
+
   # describe "#each" do
   #   let(:block) { lambda {} }
   #   it "delegates to children" do

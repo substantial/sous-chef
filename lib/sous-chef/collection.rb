@@ -18,5 +18,8 @@ class SousChef::Collection
     @children.each(&block)
   end
 
+  def has_key?(key)
+    @children.has_key?(key)
+  end
 end
 
