@@ -15,13 +15,13 @@ module SousChef
   end
 end
 
-require 'helpers/node_helpers.rb'
-require 'sous-chef/parser.rb'
-require 'sous-chef/node_tasks.rb'
-require 'sous-chef/node.rb'
-require 'sous-chef/collection.rb'
-require 'sous-chef/task_builder.rb'
-require 'sous-chef/node_builder.rb'
-require 'sous-chef/manager.rb'
-require 'sous-chef/tasks.rb'
+require 'helpers/node_helpers'
+require 'sous-chef/parser'
+require 'sous-chef/node_tasks'
+require 'sous-chef/node'
+require 'sous-chef/collection'
+require 'sous-chef/task_builder'
+require 'sous-chef/node_builder'
+require 'sous-chef/manager'
+require 'sous-chef/tasks'
 
