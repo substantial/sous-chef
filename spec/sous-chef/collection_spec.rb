@@ -10,7 +10,7 @@ describe SousChef::Collection do
     end
   end
 
-  describe "[]=" do
+  describe "#[]=" do
     subject { collection }
 
     it "it assigns to children" do
@@ -19,7 +19,7 @@ describe SousChef::Collection do
     end
   end
 
-  describe "[]" do
+  describe "#[]" do
     subject { collection }
 
     it "it access children" do
@@ -28,5 +28,13 @@ describe SousChef::Collection do
       subject.children['foo'].should == hash
     end
   end
+
+  # describe "#each" do
+  #   let(:block) { lambda {} }
+  #   it "delegates to children" do
+  #     collection.children.should_receive(:each).with(block)
+  #     collection.each block
+  #   end
+  # end
 end
 

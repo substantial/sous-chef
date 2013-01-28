@@ -14,5 +14,9 @@ class SousChef::Collection
     @children[name]
   end
 
+  def each(&block)
+    @children.each(&block)
+  end
+
 end
 
