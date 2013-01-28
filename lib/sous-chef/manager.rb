@@ -7,8 +7,8 @@ class SousChef::Manager
     initialize_node_collections
   end
 
-  def tasks
-    SousChef::TaskBuilder.new(@nodes).tasks
+  def build_tasks
+    SousChef::TaskBuilder.new(@nodes).build_tasks
   end
 
   private
