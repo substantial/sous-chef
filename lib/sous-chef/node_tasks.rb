@@ -32,7 +32,6 @@ module SousChef::NodeTasks
     end
   end
 
-
   def run(command)
     puts "Running: #{command}"
     system command
