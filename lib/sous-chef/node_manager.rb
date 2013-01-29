@@ -1,14 +1,10 @@
-class SousChef::Manager
+class SousChef::NodeManager
   attr_reader :parser, :nodes
 
   def initialize(config_file)
     @parser = SousChef::Parser.new(config_file)
     @nodes = {}
     initialize_node_collections
-  end
-
-  def build_tasks
-    SousChef::TaskBuilder.new(@nodes).build_tasks
   end
 
   private
