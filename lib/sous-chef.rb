@@ -2,17 +2,17 @@
 module SousChef
   CONFIG_FILE = File.join(Dir.pwd, "nodes", "nodes.yml")
 
-  class << self
-    def create_config
-      template = File.expand_path(File.join(File.dirname(__FILE__), 'templates', 'nodes.example.yml'))
-      if File.exists?(CONFIG_FILE)
-        puts "nodes.yml already exists"
-      else
-        puts "Coping example nodes.yml and placing in #{SousChef::CONFIG_FILE}"
-        FileUtils.cp(template, CONFIG_FILE)
-      end
+  def create_config
+    template = File.expand_path(File.join(File.dirname(__FILE__), 'templates', 'nodes.example.yml'))
+    if File.exists?(CONFIG_FILE)
+      puts "nodes.yml already exists"
+    else
+      puts "Coping example nodes.yml and placing in #{SousChef::CONFIG_FILE}"
+      FileUtils.cp(template, CONFIG_FILE)
     end
   end
+
+  module_function :create_config
 end
 
 require 'helpers/node_helpers'
