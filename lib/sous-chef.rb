@@ -1,14 +1,14 @@
 
 module SousChef
   CONFIG_FILE = File.join(Dir.pwd, "nodes", "nodes.yml")
+  CONFIG_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'templates', 'nodes.example.yml'))
 
   def create_config
-    template = File.expand_path(File.join(File.dirname(__FILE__), 'templates', 'nodes.example.yml'))
     if File.exists?(CONFIG_FILE)
       puts "nodes.yml already exists"
     else
       puts "Coping example nodes.yml and placing in #{SousChef::CONFIG_FILE}"
-      FileUtils.cp(template, CONFIG_FILE)
+      FileUtils.cp(CONFIG_TEMPLATE, CONFIG_FILE)
     end
   end
 
