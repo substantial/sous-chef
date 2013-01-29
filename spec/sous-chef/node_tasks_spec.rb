@@ -21,16 +21,5 @@ describe SousChef::NodeTasks do
       SousChef::NodeTasks.run_knife('some_command', node)
     end
   end
-
-  # describe "#cook_task" do
-  #   before do
-  #     stub(:run_knife)
-  #     should_receive(:run_knife).with("cook", node)
-  #   end
-
-  #   it "" do
-  #     cook_task(node)
-  #   end
-  # end
 end
 

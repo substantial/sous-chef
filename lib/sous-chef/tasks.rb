@@ -1,4 +1,3 @@
-require 'rake'
 
 nodes = SousChef::NodeManager.new(SousChef::CONFIG_FILE).nodes
 SousChef::TaskBuilder.new(nodes).build_tasks
