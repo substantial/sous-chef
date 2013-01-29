@@ -10,7 +10,7 @@ describe SousChef::Parser do
   end
 
   describe "#parse" do
-    subject { SousChef::Parser.new(File.join(SPEC_ROOT, "fixtures", "some_nodes.yml")).parse }
+    subject { SousChef::Parser.new(File.join(SPEC_ROOT, "support", "fixtures", "some_nodes.yml")).parse }
 
     it "parses yaml" do
       subject.should be_a Hash

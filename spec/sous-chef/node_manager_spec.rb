@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe SousChef::NodeManager do
-  let(:node_manager) { SousChef::NodeManager.new(File.join(SPEC_ROOT, "fixtures", "some_nodes.yml")) }
+  let(:node_manager) { SousChef::NodeManager.new(File.join(SPEC_ROOT, "support", "fixtures", "some_nodes.yml")) }
 
   describe "#initialize" do
     it "instantiates a parser with the config file" do
