@@ -1,6 +1,7 @@
 require 'rake'
 
-SousChef::Manager.new(SousChef::CONFIG_FILE).build_tasks
+nodes = SousChef::NodeManager.new(SousChef::CONFIG_FILE).nodes
+SousChef::TaskBuilder.new(nodes).build_tasks
 
 namespace :sous_chef do
   desc "Generate nodes.yml example config"

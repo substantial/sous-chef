@@ -22,6 +22,6 @@ require 'sous-chef/node'
 require 'sous-chef/collection'
 require 'sous-chef/task_builder'
 require 'sous-chef/node_builder'
-require 'sous-chef/manager'
+require 'sous-chef/node_manager'
 require 'sous-chef/tasks'
 

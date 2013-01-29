@@ -7,14 +7,12 @@ describe SousChef::Collection do
   subject { collection }
 
   describe "#initialize" do
-    it "sets the name" do
+    it "should set the name" do
       subject.name.should == 'some collection'
     end
   end
 
   describe "#[]= & #[]" do
-    subject { collection }
-
     it "should behave like a hash" do
       subject['foo'] = {bar: 'baz'}
       subject['foo'].should == {bar: 'baz'}
