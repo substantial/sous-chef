@@ -24,8 +24,8 @@ module SousChef
 end
 
 require 'helpers/node_helpers'
+require 'helpers/node_task_helpers'
 require 'sous-chef/parser'
-require 'sous-chef/node_tasks'
 require 'sous-chef/node'
 require 'sous-chef/collection'
 require 'sous-chef/task_builder'

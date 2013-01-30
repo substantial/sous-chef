@@ -1,6 +1,6 @@
 require 'rake'
 
-module SousChef::NodeTasks
+module SousChef::NodeTaskHelpers
   include Rake::DSL
 
   def build_node_task(node)
@@ -26,18 +26,19 @@ module SousChef::NodeTasks
   end
 
   def batch_tasks(name, tasks)
+    task_names = tasks.map(&:name)
     desc "Run knife solo prepare for all #{name} nodes"
-    multitask :prepare => filter_tasks(tasks, 'prepare')
+    multitask :prepare => filter_tasks(task_names, 'prepare')
 
     desc "Run knife solo cook for all #{name} nodes"
-    multitask :cook => filter_tasks(tasks, 'cook')
+    multitask :cook => filter_tasks(task_names, 'cook')
 
     desc "Run knife solo bootstrap for all #{name} nodes"
-    multitask :bootstrap => filter_tasks(tasks, 'bootstrap')
+    multitask :bootstrap => filter_tasks(task_names, 'bootstrap')
   end
 
-  def filter_tasks(tasks, desired_task)
-    tasks.map(&:name).keep_if { |task_name| task_name.include? desired_task }
+  def filter_tasks(tasks_names, desired_task)
+    tasks_names.keep_if { |task_name| task_name.include? desired_task }
   end
 
   def prepare_task(node)
