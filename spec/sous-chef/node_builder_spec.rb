@@ -6,18 +6,14 @@ describe SousChef::NodeBuilder do
   describe "#build" do
     subject { node_builder.build}
 
-    context "with a node hash" do
-      before { node_builder.stub(node?: true) }
-      it "should return an Node instance" do
-        subject.should be_a SousChef::Node
-      end
+    it "should return an Node instance" do
+      node_builder.stub(node?: true)
+      subject.should be_a SousChef::Node
     end
 
-    context "without a node" do
-      before { node_builder.stub(node?: false) }
-      it"should return a Collectyion instance" do
-        subject.should be_a SousChef::Collection
-      end
+    it"should return a Collectyion instance" do
+      node_builder.stub(node?: false)
+      subject.should be_a SousChef::Collection
     end
   end
 end
