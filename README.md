@@ -6,6 +6,12 @@ Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
 
 Add the following to your `Rakefile`:
 
+`gem install sous-chef`
+
+or add
+
+`gem sous-chef` to your `Gemfile` and run `bundle install`
+
 ```ruby
   require 'sous-chef'
 ```
