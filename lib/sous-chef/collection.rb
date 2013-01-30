@@ -1,3 +1,5 @@
+require 'forwardable'
+
 class SousChef::Collection
   extend Forwardable
 
