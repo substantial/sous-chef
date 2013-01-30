@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sous-chef (0.0.4)
+    sous-chef (0.0.6)
       knife-solo (~> 0.1.0)
       rake (~> 10.0.3)
 
