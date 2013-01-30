@@ -8,6 +8,14 @@ module SousChef::NodeTaskHelpers
       prepare_task(node)
       cook_task(node)
       bootstrap_task(node)
+      clean_task(node)
+    end
+  end
+
+  def clean_task(node)
+    desc "Run knife solo clean for #{node.name}"
+    task :clean do
+      run_knife 'clean', node
     end
   end
 
@@ -34,6 +42,7 @@ module SousChef::NodeTaskHelpers
 
   def batch_tasks(name, tasks)
     task_names = tasks.map(&:name)
+
     desc "Run knife solo prepare for all #{name} nodes"
     multitask :prepare => filter_tasks(task_names, 'prepare')
 
@@ -42,6 +51,9 @@ module SousChef::NodeTaskHelpers
 
     desc "Run knife solo bootstrap for all #{name} nodes"
     multitask :bootstrap => filter_tasks(task_names, 'bootstrap')
+
+    desc "Run knife solo clean for all #{name} nodes"
+    multitask :clean => filter_tasks(task_names, 'clean')
   end
 
   def filter_tasks(tasks_names, desired_task)
@@ -55,7 +67,9 @@ module SousChef::NodeTaskHelpers
   end
 
   def run_knife(command, node)
-    run "knife solo #{command} -F #{node.ssh_config_path} #{node.hostname} -N #{node.name} #{node.config}"
+    options = "-F #{node.ssh_config_path} #{node.hostname}"
+    options = "#{options} -N #{node.name} #{node.config}" unless %w[clean].include? command
+    run "knife solo #{command} #{options}"
   end
 
   module_function :build_node_task, :cook_task, :bootstrap_task, :prepare_task,

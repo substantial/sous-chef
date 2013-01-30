@@ -6,14 +6,23 @@ describe SousChef::NodeTaskHelpers do
   end
 
   describe "#run_knife" do
-    it "should run knife solo command for given node" do
-      node = double('node')
+    let(:node) { double('node') }
+
+    before do
       node.stub(name: 'foo')
       node.stub(hostname: 'node_hostname')
       node.stub(ssh_config_path: 'ssh_config_path')
       node.stub(config: 'knife_solo_node_config')
+    end
+
+    it "should run knife solo command for given node" do
       SousChef::NodeTaskHelpers.should_receive(:run).with("knife solo some_command -F ssh_config_path node_hostname -N foo knife_solo_node_config")
       SousChef::NodeTaskHelpers.run_knife('some_command', node)
+    end
+
+    it "should not specify node config for #clean command" do
+      SousChef::NodeTaskHelpers.should_receive(:run).with("knife solo clean -F ssh_config_path node_hostname")
+      SousChef::NodeTaskHelpers.run_knife('clean', node)
     end
   end
 
