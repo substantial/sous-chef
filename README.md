@@ -66,6 +66,10 @@ vagrant:
 
 `rake -T` for a full list of tasks provided:
 
+The :all namespace will execute specified rake task for all nodes in a given
+namespace. e.g. `rake production:all:deploy` or `rake
+production:web:all:deploy`
+
 ## Contributing
 
 1. Fork it
