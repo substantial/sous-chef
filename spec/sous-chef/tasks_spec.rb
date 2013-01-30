@@ -37,5 +37,10 @@ describe "generated node tasks" do
   it "should namespace nodes tasks" do
     rake_tasks.should include "production:web:OtherAwesome:bootstrap"
   end
+
+  it "should have #all task for namespaces" do
+    rake_tasks.should include "production:all:cook"
+    rake_tasks.should include "production:web:all:prepare"
+  end
 end
 

@@ -6,6 +6,12 @@ Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
 
 Add the following to your `Rakefile`:
 
+`gem install sous-chef`
+
+or add
+
+`gem sous-chef` to your `Gemfile` and run `bundle install`
+
 ```ruby
   require 'sous-chef'
 ```
@@ -65,6 +71,10 @@ vagrant:
 ## Usage
 
 `rake -T` for a full list of tasks provided:
+
+The `:all` namespace will execute specified rake task for all nodes under the
+parent namespace. e.g. `rake production:all:cook` or `rake
+production:web:all:cook`
 
 ## Contributing
 

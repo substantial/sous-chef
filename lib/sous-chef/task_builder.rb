@@ -1,5 +1,5 @@
 class SousChef::TaskBuilder
-  include SousChef::NodeTasks
+  include SousChef::NodeTaskHelpers
   include SousChef::NodeHelpers
 
   def initialize(nodes)
@@ -8,6 +8,19 @@ class SousChef::TaskBuilder
 
   def build_tasks
     build_namespace(@nodes)
+    build_batch_tasks(@nodes)
+  end
+
+  def build_batch_tasks(collection)
+    collection.each do |name, collection|
+      next if node?(collection)
+      namespace name do |ns|
+        namespace :all do
+          batch_tasks(name, ns.tasks)
+        end
+        build_batch_tasks(collection)
+      end
+    end
   end
 
   def build_namespace(collection)
