@@ -3,6 +3,8 @@ module SousChef
   CONFIG_TEMPLATE = File.expand_path(File.join(File.dirname(__FILE__), 'templates', 'nodes.example.yml'))
   CONFIG_FILE = File.join(Dir.pwd, "nodes", "nodes.yml")
 
+  module_function
+
   def config_file_location
     CONFIG_FILE
   end
@@ -20,7 +22,6 @@ module SousChef
     end
   end
 
-  module_function :create_config, :config_file_location, :config_template_location
 end
 
 require 'helpers/node_helpers'

@@ -3,6 +3,8 @@ require 'rake'
 module SousChef::NodeTaskHelpers
   include Rake::DSL
 
+  module_function
+
   def build_node_task(node)
     namespace node.name do
       prepare_task(node)
@@ -71,8 +73,5 @@ module SousChef::NodeTaskHelpers
     options = "#{options} -N #{node.name} #{node.config}" unless %w[clean].include? command
     run "knife solo #{command} #{options}"
   end
-
-  module_function :build_node_task, :cook_task, :bootstrap_task, :prepare_task,
-    :run, :run_knife, :batch_tasks, :filter_tasks
 end
 
