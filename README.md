@@ -18,7 +18,7 @@ And add the following to your `Rakefile`:
   require 'sous-chef'
 ```
 
-`rake sous_chef:init` will place a sample `nodes.yml` under `nodes/nodes.yml`
+Run `rake sous_chef:init` to place a sample `nodes.yml` under `nodes/nodes.yml`
 
 Run `rake -T` to display nodes and commands defined in `nodes/nodes.yml`
 
