@@ -1,5 +1,5 @@
 class SousChef::TaskBuilder
-  include SousChef::NodeTasks
+  include SousChef::NodeTaskHelpers
   include SousChef::NodeHelpers
 
   def initialize(nodes)

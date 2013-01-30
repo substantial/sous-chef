@@ -18,7 +18,7 @@ describe SousChef::NodeTaskHelpers do
   end
 
   describe "#filter_tasks" do
-    it "should" do
+    it "should filter for tasks that have the action" do
       tasks = %w[ foo:bar:action foo:bar:baz]
       SousChef::NodeTaskHelpers.filter_tasks(tasks, 'action').should include "foo:bar:action"
     end
