@@ -25,6 +25,13 @@ module SousChef::NodeTaskHelpers
     end
   end
 
+  def prepare_task(node)
+    desc "Run knife solo prepare for #{node.name}"
+    task :prepare do
+      run_knife 'prepare', node
+    end
+  end
+
   def batch_tasks(name, tasks)
     task_names = tasks.map(&:name)
     desc "Run knife solo prepare for all #{name} nodes"
@@ -39,13 +46,6 @@ module SousChef::NodeTaskHelpers
 
   def filter_tasks(tasks_names, desired_task)
     tasks_names.keep_if { |task_name| task_name.include? desired_task }
-  end
-
-  def prepare_task(node)
-    desc "Run knife solo prepare for #{node.name}"
-    task :prepare do
-      run_knife 'prepare', node
-    end
   end
 
   def run(command)
