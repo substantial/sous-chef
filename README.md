@@ -2,28 +2,31 @@
 
 Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
 
-## Install
+## Usage
 
-Add the following to your `Rakefile`:
+Simply ensure the gem is installed using:
 
-`gem install sous-chef`
+    gem install sous-chef
 
-or add
+Or add this to your Gemfile if you use bundler:
 
-`gem sous-chef` to your `Gemfile` and run `bundle install`
+    gem 'sous-chef'
+
+And add the following to your `Rakefile`:
 
 ```ruby
   require 'sous-chef'
 ```
 
-You may run `rake sous_chef:init` to generate sample `nodes.yml` to
-`nodes/nodes.yml`
+`rake sous_chef:init` will place a sample `nodes.yml` under `nodes/nodes.yml`
+
+Run `rake -T` to display nodes and commands defined in `nodes/nodes.yml`
 
 ## Configure
 
-Create configuration in knife-solo nodes dir e.g. `nodes/nodes.yml`. Node
-configuration is used for sshconfig as well as nodename. You can namespace
-nodes however you want. Example `nodes.yml`:
+Node configuration is  done in `nodes/nodes.yml`. You can namespace your nodes
+however you want. You can run multiple tasks in parallel using the `:all:`
+namespace Example `nodes.yml`:
 
 ```yaml
 # Format:
@@ -67,14 +70,6 @@ vagrant:
     IdentitiesOnly: "yes"
     ForwardAgent: "yes"
 ```
-
-## Usage
-
-`rake -T` for a full list of tasks provided:
-
-The `:all` namespace will execute specified rake task for all nodes under the
-parent namespace. e.g. `rake production:all:cook` or `rake
-production:web:all:cook`
 
 ## Contributing
 
