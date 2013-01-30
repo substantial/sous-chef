@@ -31,6 +31,13 @@ describe SousChef::NodeTaskHelpers do
       tasks = %w[foo:bar:action foo:bar:baz]
       SousChef::NodeTaskHelpers.filter_tasks(tasks, 'action').should include "foo:bar:action"
     end
+
+    it "shouldn't alter the input task list" do
+      tasks = %w[foo:bar:action foo:bar:baz]
+      tasks_clone = tasks.clone
+      SousChef::NodeTaskHelpers.filter_tasks(tasks, 'action').should include "foo:bar:action"
+      tasks.should == tasks_clone
+    end
   end
 end
 

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
+def get_task(task_list, task_name)
+  task_list.select {|task| task.name == task_name}.first
+end
+
 describe "sous_chef.rake" do
   before(:all) do
     @rake = Rake::Application.new
@@ -41,6 +45,17 @@ describe "generated node tasks" do
   it "should have #all task for namespaces" do
     rake_tasks.should include "production:all:cook"
     rake_tasks.should include "production:web:all:prepare"
+  end
+
+  describe "generated namespace#all tasks" do
+    let(:multitasks) { multitasks = @rake.tasks.keep_if{ |task| task.is_a? Rake::MultiTask } }
+
+    %w[prepare cook clean bootstrap].each do |command|
+      it "should include all node tasks for #{command}" do
+        production_prepare_multitask = get_task(multitasks, "production:web:all:#{command}")
+        production_prepare_multitask.prerequisites.should =~ ["production:web:OtherAwesome:#{command}"]
+      end
+    end
   end
 end
 

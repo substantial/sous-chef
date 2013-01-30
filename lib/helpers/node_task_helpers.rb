@@ -59,7 +59,7 @@ module SousChef::NodeTaskHelpers
   end
 
   def filter_tasks(tasks_names, desired_task)
-    tasks_names.keep_if { |task_name| task_name.include? desired_task }
+    tasks_names.clone.keep_if { |task_name| task_name.include? desired_task }
   end
 
   def run(command)
