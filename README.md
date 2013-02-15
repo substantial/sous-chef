@@ -1,6 +1,9 @@
 # Sous Chef
 
-Manage [knife-solo](http://matschaffer.github.com/knife-solo/) nodes.
+Rake Tasks for managing [knife-solo](http://matschaffer.github.com/knife-solo/)
+nodes.
+
+I've stopped work in favor of a knife plugin, [knife_sous](https://github.com/substantial/knife_sous)
 
 ## Usage
 
