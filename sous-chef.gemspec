@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.name        = 'sous-chef'
   s.version     = "0.0.7"
   s.description = %q{Manage knife-solo nodes}
-  s.summary     = %q{Manage knife-solo nodes by environment. Run knife solo
+  s.summary     = %q{Rake tasks for managing knife-solo nodes by environment. Run knife solo
 commands on one or multiple nodes.}
   s.homepage    = %q{http://github.com/substantial/sous-chef}
   s.license     = "MIT"
@@ -25,6 +25,5 @@ commands on one or multiple nodes.}
   s.add_development_dependency "rake", "~> 10.0.0"
   s.add_development_dependency "bundler", "~> 1.1"
   s.add_dependency "knife-solo", "~> 0.1.0"
-
 end
 
