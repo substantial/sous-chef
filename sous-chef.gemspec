@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.email       = "shaun@substantail.com"
 
   s.name        = 'sous-chef'
-  s.version     = "0.0.7"
+  s.version     = "0.0.8"
   s.description = %q{Manage knife-solo nodes}
   s.summary     = %q{Rake tasks for managing knife-solo nodes by environment. Run knife solo
 commands on one or multiple nodes.}
@@ -24,6 +24,6 @@ commands on one or multiple nodes.}
   s.add_development_dependency "rspec", "~> 2.12.0"
   s.add_development_dependency "rake", "~> 10.0.0"
   s.add_development_dependency "bundler", "~> 1.1"
-  s.add_dependency "knife-solo", "~> 0.1.0"
+  s.add_dependency "knife-solo", "~> 0.2.0"
 end
 
